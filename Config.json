@@ -1,12 +1,12 @@
 {
-   "Version":"12",
+   "Version":"13",
    "Ads":"off",
    "UIMode":"html",
    "1HtmlUIUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/UI%20HTML",
    "HtmlUIUrl":"https://raw.githubusercontent.com/gustavo3419/yumeko/refs/heads/main/Home_yumeko",
    "7HtmlUIUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/Gustavo%20html",
    "UpdateUrl":"https://raw.githubusercontent.com/gustavo3419/config.json/refs/heads/main/Config.json",
-   "ReleaseNotes":"SO JESUS SALVA",
+   "ReleaseNotes":"GUSTAVO VPN",
    "Tema":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/Temas",
    "Fundo":"https://pbs.twimg.com/media/HI4QpqeWkAAl9ys?format=jpg&name=large",
    "Servers":[
