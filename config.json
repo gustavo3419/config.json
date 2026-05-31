@@ -1,17 +1,17 @@
 {
-   "Version":"1",
+   "Version":"10",
    "Ads":"off",
    "UIMode":"html",
    "1HtmlUIUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/UI%20HTML",
    "HtmlUIUrl":"https://raw.githubusercontent.com/gustavo3419/yumeko/refs/heads/main/Home_yumeko",
    "7HtmlUIUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/Gustavo%20html",
-   "UpdateUrl":"https://raw.githubusercontent.com/gustavo3419/gugu33/refs/heads/main/config.json?token=GHSAT0AAAAAAD6G76CXZ7INIZN2XFZE7J5A2Q4G",
+   "UpdateUrl":"https://raw.githubusercontent.com/gustavo3419/config.json/refs/heads/main/config.json",
    "ReleaseNotes":"LUGH DEVELOP NOTES",
    "Tema":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/Temas",
    "Fundo":"https://pbs.twimg.com/media/HI4QpqeWkAAl9ys?format=jpg&name=large",
    "Servers":[
       {
-         "Name":"TIM 01",
+         "Name":"TIM gugu",
          "Flag":"br",
          "FlagUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/tim.png",
          "Info":"Direct",
