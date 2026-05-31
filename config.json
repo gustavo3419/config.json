@@ -1,1 +1,105 @@
-dddddc
+{
+   "Version":"1",
+   "Ads":"off",
+   "UIMode":"html",
+   "1HtmlUIUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/UI%20HTML",
+   "HtmlUIUrl":"https://raw.githubusercontent.com/gustavo3419/yumeko/refs/heads/main/Home_yumeko",
+   "7HtmlUIUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/Gustavo%20html",
+   "UpdateUrl":"https://raw.githubusercontent.com/gustavo3419/gugu33/refs/heads/main/config.json?token=GHSAT0AAAAAAD6G76CXZ7INIZN2XFZE7J5A2Q4G",
+   "ReleaseNotes":"LUGH DEVELOP NOTES",
+   "Tema":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/Temas",
+   "Fundo":"https://pbs.twimg.com/media/HI4QpqeWkAAl9ys?format=jpg&name=large",
+   "Servers":[
+      {
+         "Name":"TIM 01",
+         "Flag":"br",
+         "FlagUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/tim.png",
+         "Info":"Direct",
+         "ServerHost":"g.gugu55.online",
+         "ServerPort":"22",
+         "CheckUser":"http://152.70.220.155:5959/checkUser",
+         "SSLPort":"443",
+         "ProxyHost":"g.gugu55.online",
+         "ProxyPort":"80",
+         "USER":"gustavo33",
+         "PASS":"341914",
+         "Payload":"MERGE / HTTP/1.1[crlf]Host: g.gugu55.online[crlf]Upgrade: Websocket[crlf]Upgrade: Websocket[crlf][crlf]",
+         "Sni":"google.com"
+      },
+      {
+         "Name":"TIM 02",
+         "Flag":"us",
+         "FlagUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/tim.png",
+         "Info":"PROXY",
+         "ServerHost":"g.gugu55.online",
+         "ServerPort":"22",
+         "CheckUser":"http://152.70.220.155:5959/checkUser",
+         "SSLPort":"443",
+         "ProxyHost":"g.gugu55.online",
+         "ProxyPort":"80",
+         "USER":"gustavo33",
+         "PASS":"341914",
+         "Payload":"MERGE / HTTP/1.1[crlf]Host: [app_host][crlf]Upgrade: Websocket[crlf]Upgrade: Websocket[crlf][crlf]",
+         "Sni":"google.com"
+      },
+      {
+         "Name":"TIM 03",
+         "Flag":"us",
+         "FlagUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/tim.png",
+         "Info":"PROXY",
+         "ServerHost":"g.gugu55.online",
+         "ServerPort":"22",
+         "CheckUser":"http://152.70.220.155:5959/checkUser",
+         "SSLPort":"443",
+         "ProxyHost":"g.gugu55.online",
+         "ProxyPort":"80",
+         "USER":"gustavo33",
+         "PASS":"341914",
+         "Payload":"GET / HTTP/1.1[crlf]Host: g.gugu55.online[crlf]Upgrade: websocket[crlf][crlf]",
+         "Sni":"google.com"
+      },
+      {
+         "Name":"SERVIDOR VMESS 01",
+         "Flag":"br",
+         "FlagUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/br.png",
+         "Info":"V2RAY",
+         "ServerHost":"g.gugu55.online",
+         "ServerPort":"22",
+         "CheckUser":"http://152.70.220.155:5959/checkUser",
+         "SSLPort":"443",
+         "ProxyHost":"104.16.239.166",
+         "ProxyPort":"80",
+         "USER":"gustavo33",
+         "PASS":"341914",
+         "v2ray":"vmess://eyJ0eXBlIjogIm5vbmUiLCAicGF0aCI6ICIvdnBuamFudGl0IiwgImhvc3QiOiAiIiwgIm5ldCI6ICJ3cyIsICJwb3J0IjogIjEwMDAxIiwgImFkZCI6ICJncjIudnBuamFudGl0LmNvbSIsICJwcyI6ICJMdWdoLXZwbmphbnRpdC5jb20iLCAidGxzIjogInRscyIsICJhaWQiOiAiMCIsICJ2IjogIjIiLCAiaWQiOiAiZWIwYTE5MGMtNTc4Yi0xMWYxLWI1OGItZWYwZDE2YjUyODMwIn0=",
+         "Payload":"ACL / HTTP/1.1[crlf]Host: g.gugu55.online[crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]",
+         "Sni":"google.com"
+      },
+      {
+         "Name":"SERVIDOR VMESS 02",
+         "Flag":"br",
+         "FlagUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/br.png",
+                  
+         "Info":"V2RAY",
+         "ServerHost":"asia1.fufo.org",
+         "ServerPort":"80",
+         "USER":"gustavo33",
+         "PASS":"341914",
+         "v2ray":"vmess://eyJ0eXBlIjogIm5vbmUiLCAicGF0aCI6ICIvdnBuamFudGl0IiwgImhvc3QiOiAiIiwgIm5ldCI6ICJ3cyIsICJwb3J0IjogIjEwMDAwIiwgImFkZCI6ICJncjIudnBuamFudGl0LmNvbSIsICJwcyI6ICJMdWdoLXZwbmphbnRpdC5jb20iLCAidGxzIjogIiIsICJhaWQiOiAiMCIsICJ2IjogIjIiLCAiaWQiOiAiZWIwYTE5MGMtNTc4Yi0xMWYxLWI1OGItZWYwZDE2YjUyODMwIn0="
+      }
+   ],
+   "MultiServs":[
+      {
+         "Name":"GUSTAVO",
+         "TYPE":"premium",
+         "FLAG":"br.png",
+         "FlagUrl":"https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/br.png",
+         "ServerIP":"g.gugu55.online",
+         "CheckUser":"http://152.70.220.155:5959/checkUser",
+         "ServerPort":"22",
+         "SSLPort":"443",
+         "USER":"",
+         "PASS":""
+      }
+   ]
+}
