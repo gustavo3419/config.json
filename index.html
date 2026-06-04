@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editor Config Yumeko</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1a2e; color: #eee; font-family: monospace; }
+  .header { background: #16213e; padding: 15px 20px; display: flex; align-items: center; gap: 10px; }
+  .header h1 { font-size: 18px; color: #00d4ff; }
+  .container { padding: 15px; }
+  .status { padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 14px; display: none; }
+  .status.ok { background: #1a4a1a; color: #4caf50; display: block; }
+  .status.erro { background: #4a1a1a; color: #f44336; display: block; }
+  .status.info { background: #1a2a4a; color: #00d4ff; display: block; }
+  textarea {
+    width: 100%; height: calc(100vh - 200px);
+    background: #0d1117; color: #c9d1d9;
+    border: 1px solid #30363d; border-radius: 8px;
+    padding: 15px; font-size: 13px; font-family: monospace;
+    resize: none; outline: none; line-height: 1.5;
+  }
+  .botoes { display: flex; gap: 10px; margin-top: 15px; }
+  button {
+    flex: 1; padding: 14px; border: none; border-radius: 8px;
+    font-size: 15px; font-weight: bold; cursor: pointer;
+  }
+  .btn-salvar { background: #238636; color: white; }
+  .btn-salvar:active { background: #1a6628; }
+  .btn-recarregar { background: #30363d; color: #eee; }
+  .btn-recarregar:active { background: #21262d; }
+  .loading { text-align: center; padding: 40px; color: #00d4ff; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>⚙️ Editor Config Yumeko</h1>
+</div>
+
+<div class="container">
+  <div class="status info" id="status">Carregando JSON...</div>
+  <textarea id="editor" spellcheck="false"></textarea>
+  <div class="botoes">
+    <button class="btn-recarregar" onclick="carregar()">🔄 Recarregar</button>
+    <button class="btn-salvar" onclick="salvar()">💾 Salvar no GitHub</button>
+  </div>
+</div>
+
+<script>
+const OWNER = "gustavo3419";
+const REPO = "config.json";
+const FILE = "Config.json";
+const TOKEN = "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";
+const API = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`;
+
+let shaAtual = "";
+
+function mostrarStatus(msg, tipo) {
+  const el = document.getElementById("status");
+  el.textContent = msg;
+  el.className = "status " + tipo;
+}
+
+async function carregar() {
+  mostrarStatus("Carregando JSON...", "info");
+  try {
+    const r = await fetch(API + "?t=" + Date.now(), {
+      headers: { "Authorization": "Bearer " + TOKEN }
+    });
+    const data = await r.json();
+    shaAtual = data.sha;
+    const conteudo = atob(data.content.replace(/\n/g, ""));
+    const json = JSON.parse(conteudo);
+    document.getElementById("editor").value = JSON.stringify(json, null, 3);
+    mostrarStatus("✅ JSON carregado com sucesso!", "ok");
+  } catch(e) {
+    mostrarStatus("❌ Erro ao carregar: " + e.message, "erro");
+  }
+}
+
+async function salvar() {
+  const texto = document.getElementById("editor").value;
+  let json;
+  try {
+    json = JSON.parse(texto);
+  } catch(e) {
+    mostrarStatus("❌ JSON inválido! Verifique o formato.", "erro");
+    return;
+  }
+  mostrarStatus("Salvando no GitHub...", "info");
+  try {
+    const conteudo = btoa(unescape(encodeURIComponent(JSON.stringify(json, null, 3))));
+    const r = await fetch(API, {
+      method: "PUT",
+      headers: {
+        "Authorization": "Bearer " + TOKEN,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Editado pelo Web Editor",
+        content: conteudo,
+        sha: shaAtual
+      })
+    });
+    if (r.status === 200 || r.status === 201) {
+      shaAtual = (await r.json()).content.sha;
+      mostrarStatus("✅ Salvo no GitHub com sucesso!", "ok");
+    } else {
+      const err = await r.json();
+      mostrarStatus("❌ Erro: " + err.message, "erro");
+    }
+  } catch(e) {
+    mostrarStatus("❌ Erro ao salvar: " + e.message, "erro");
+  }
+}
+
+carregar();
+</script>
+</body>
+</html>
