@@ -183,6 +183,7 @@
 <div class="tabs">
   <div class="tab active" onclick="mudarAba('config')">⚙️ Config</div>
   <div class="tab" onclick="mudarAba('html')">🌐 Home UI</div>
+  <div class="tab" onclick="mudarAba('temas')">🎨 Temas</div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -261,6 +262,39 @@
     </div>
     <div class="html-editor-wrap">
       <textarea id="html_editor" placeholder="Carregando HTML..."></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- ABA TEMAS -->
+<div class="tab-content" id="aba-temas">
+  <div class="container">
+    <div class="section-label">🎨 Temas — Temas</div>
+    <div class="card">
+      <div class="field">
+        <div class="field-label"><span>🔖</span> Version</div>
+        <input type="text" id="t_Version" placeholder="ex: 15">
+      </div>
+      <div class="field field-mono">
+        <div class="field-label"><span>🖼️</span> Wallpaper</div>
+        <input type="url" id="t_Wallpaper" placeholder="https://...">
+      </div>
+      <div class="field field-mono">
+        <div class="field-label"><span>🔵</span> Logo</div>
+        <input type="url" id="t_Logo" placeholder="https://...">
+      </div>
+      <div class="field field-mono">
+        <div class="field-label"><span>🖼️</span> Banner</div>
+        <input type="url" id="t_Banner" placeholder="https://...">
+      </div>
+      <div class="field field-mono">
+        <div class="field-label"><span>🔗</span> BannerLink</div>
+        <input type="url" id="t_BannerLink" placeholder="https://...">
+      </div>
+      <div class="field">
+        <div class="field-label"><span>💬</span> BannerMsg</div>
+        <input type="text" id="t_BannerMsg" placeholder="🔥 Mensagem do banner">
+      </div>
     </div>
   </div>
 </div>
@@ -356,7 +390,12 @@ const HTML_REPO = "yumeko";
 const HTML_FILE = "Home_yumeko";
 const HTML_API = `https://api.github.com/repos/${HTML_OWNER}/${HTML_REPO}/contents/${HTML_FILE}`;
 
-let cfg = {};
+// Temas
+const TEMAS_OWNER = "gustavo3419";
+const TEMAS_REPO = "Temas";
+const TEMAS_FILE = "Temas";
+const TEMAS_API = `https://api.github.com/repos/${TEMAS_OWNER}/${TEMAS_REPO}/contents/${TEMAS_FILE}`;
+let temasSha = "";
 let shaAtual = "";
 let htmlSha = "";
 let abaAtiva = "config";
@@ -374,15 +413,19 @@ function toast(msg, tipo="info") {
 
 function mudarAba(aba) {
   abaAtiva = aba;
-  document.querySelectorAll(".tab").forEach((t,i) => t.classList.remove("active"));
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
   document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
   if (aba === "config") {
     document.querySelectorAll(".tab")[0].classList.add("active");
     document.getElementById("aba-config").classList.add("active");
-  } else {
+  } else if (aba === "html") {
     document.querySelectorAll(".tab")[1].classList.add("active");
     document.getElementById("aba-html").classList.add("active");
     if (!htmlSha) carregarHTML();
+  } else if (aba === "temas") {
+    document.querySelectorAll(".tab")[2].classList.add("active");
+    document.getElementById("aba-temas").classList.add("active");
+    if (!temasSha) carregarTemas();
   }
 }
 
@@ -571,9 +614,52 @@ async function carregarHTML() {
   } catch(e) { toast("❌ Erro ao carregar Home UI: "+e.message, "erro"); }
 }
 
+async function carregarTemas() {
+  toast("Carregando Temas...", "info");
+  try {
+    const r = await fetch(TEMAS_API+"?t="+Date.now(), { headers: {"Authorization":"Bearer "+TOKEN} });
+    const data = await r.json();
+    temasSha = data.sha;
+    const conteudo = JSON.parse(atob(data.content.replace(/\n/g,"")));
+    document.getElementById("t_Version").value = conteudo.Version||"";
+    document.getElementById("t_Wallpaper").value = conteudo.Wallpaper||"";
+    document.getElementById("t_Logo").value = conteudo.Logo||"";
+    document.getElementById("t_Banner").value = conteudo.Banner||"";
+    document.getElementById("t_BannerLink").value = conteudo.BannerLink||"";
+    document.getElementById("t_BannerMsg").value = conteudo.BannerMsg||"";
+    toast("✅ Temas carregado!", "ok");
+  } catch(e) { toast("❌ Erro ao carregar Temas: "+e.message, "erro"); }
+}
+
+async function salvarTemas() {
+  const btn = document.getElementById("btn-save");
+  btn.disabled = true; btn.innerHTML = '<span class="loading"></span>Salvando...';
+  try {
+    const obj = {
+      Version: document.getElementById("t_Version").value,
+      Wallpaper: document.getElementById("t_Wallpaper").value,
+      Logo: document.getElementById("t_Logo").value,
+      Banner: document.getElementById("t_Banner").value,
+      BannerLink: document.getElementById("t_BannerLink").value,
+      BannerMsg: document.getElementById("t_BannerMsg").value,
+    };
+    const conteudo = btoa(unescape(encodeURIComponent(JSON.stringify(obj,null,4))));
+    const r = await fetch(TEMAS_API, {
+      method: "PUT",
+      headers: {"Authorization":"Bearer "+TOKEN,"Content-Type":"application/json"},
+      body: JSON.stringify({message:"Temas editado pelo Web Editor",content:conteudo,sha:temasSha})
+    });
+    if (r.status===200||r.status===201) {
+      temasSha = (await r.json()).content.sha;
+      toast("✅ Temas salvo!", "ok");
+    } else { toast("❌ "+(await r.json()).message, "erro"); }
+  } catch(e) { toast("❌ "+e.message, "erro"); }
+  btn.disabled = false; btn.innerHTML = "💾 Salvar no GitHub";
+}
 async function salvarAtivo() {
   if (abaAtiva === "config") await salvarConfig();
-  else await salvarHTML();
+  else if (abaAtiva === "html") await salvarHTML();
+  else if (abaAtiva === "temas") await salvarTemas();
 }
 
 async function salvarConfig() {
