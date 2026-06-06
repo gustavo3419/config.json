@@ -1,9 +1,9 @@
 {
-   "Version": "31",
+   "Version": "32",
    "Ads": "off",
    "UIMode": "html",
    "1HtmlUIUrl": "https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/UI%20HTML",
-   "HtmlUIUrl": "/start",
+   "HtmlUIUrl": "https://raw.githubusercontent.com/gustavo3419/yumeko/refs/heads/main/Home_yumeko",
    "7HtmlUIUrl": "https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/Gustavo%20html",
    "UpdateUrl": "https://raw.githubusercontent.com/gustavo3419/config.json/refs/heads/main/Config.json`",
    "ReleaseNotes": "GUSTAVO VPN",
