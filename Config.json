@@ -1,5 +1,5 @@
 {
-   "Version": "28",
+   "Version": "29",
    "Ads": "off",
    "UIMode": "html",
    "1HtmlUIUrl": "https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/UI%20HTML",
@@ -7,7 +7,7 @@
    "7HtmlUIUrl": "https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/Gustavo%20html",
    "UpdateUrl": "https://raw.githubusercontent.com/gustavo3419/config.json/refs/heads/main/Config.json",
    "ReleaseNotes": "GUSTAVO VPN",
-   "Tema": "https://raw.githubusercontent.com/Klesyolira/Lugh-LT/refs/heads/main/Temas",
+   "Tema": "https://raw.githubusercontent.com/gustavo3419/Temas/refs/heads/main/Temas",
    "Fundo": "https://pbs.twimg.com/media/HI4QpqeWkAAl9ys?format=jpg&name=large",
    "Servers": [
       {
