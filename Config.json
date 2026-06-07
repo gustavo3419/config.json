@@ -1,5 +1,5 @@
 {
-   "Version": "45",
+   "Version": "46",
    "Ads": "off",
    "UIMode": "html",
    "UpdateUrl": "https://raw.githubusercontent.com/gustavo3419/config.json/refs/heads/main/Config.json",
@@ -98,7 +98,7 @@
          "PASS": ""
       }
    ],
-   "HtmlUIUrl": "",
+   "HtmlUIUrl": "https://raw.githubusercontent.com/gustavo3419/yumeko/refs/heads/main/Home_yumeko",
    "1HtmlUIUrl": "",
    "7HtmlUIUrl": ""
 }
